@@ -6,15 +6,15 @@ export class ColorTool extends React.Component {
 
     const headerText = 'Color Tool';
 
+    const colors = [ 'red', 'blue', 'green' ];
+
     return (
       <div>
         <header>
           <h1>{headerText.toUpperCase()}</h1>
         </header>
         <ul>
-          <li>red</li>
-          <li>blue</li>
-          <li>green</li>
+          {colors.map(color =>  <li>{color}</li>)}
         </ul>
       </div>
     );
