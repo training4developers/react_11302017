@@ -6,7 +6,14 @@ export class ColorTool extends React.Component {
 
     const headerText = 'Color Tool';
 
-    const colors = [ 'red', 'blue', 'green' ];
+    // Object.freeze(this.props)
+    // console.log(Object.isFrozen(this.props));
+
+    // never do these operations
+    // this.props.message = 'Hope and Peace!';
+    // this.props.colors = [];
+    // delete this.props.colors
+    // this.props.colors.push('brown');
 
     return (
       <div>
@@ -14,7 +21,7 @@ export class ColorTool extends React.Component {
           <h1>{headerText.toUpperCase()}</h1>
         </header>
         <ul>
-          {colors.map(color =>  <li>{color}</li>)}
+          {this.props.colors.map(color =>  <li>{color}</li>)}
         </ul>
       </div>
     );
