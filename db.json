@@ -1,0 +1,36 @@
+{
+  "cars": [
+    {
+      "id": 1,
+      "make": "Ford",
+      "model": "Fusion Hybrid",
+      "year": 2016,
+      "color": "red",
+      "price": 26000
+    },
+    {
+      "id": 2,
+      "make": "Chevrolet",
+      "model": "Volt",
+      "year": 2017,
+      "color": "blue",
+      "price": 32000
+    },
+    {
+      "id": 3,
+      "make": "Tesla",
+      "model": "S",
+      "year": 2015,
+      "color": "black",
+      "price": 100000
+    },
+    {
+      "make": "Saturn",
+      "model": "SL2",
+      "year": 1999,
+      "color": "green",
+      "price": 15000,
+      "id": 4
+    }
+  ]
+}
