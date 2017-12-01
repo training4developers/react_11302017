@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { ToolHeader } from './ToolHeader';
+import { DataTable } from './DataTable';
 
 export class ColorTool extends React.Component {
 
@@ -35,12 +36,18 @@ export class ColorTool extends React.Component {
   }
 
   render() {
+
+    const cols = [
+      { field: 'name', header: 'Name' },
+      { field: 'hexCode', header: 'RGB' },
+    ];
+
     return (
       <div>
         <ToolHeader headerText="Color Tool" />
-        <ul>
-          {this.state.colors.map(color => <li>{color.name}</li>)}
-        </ul>
+        
+        <DataTable data={this.state.colors} cols={cols} />
+        
         <form>
           <div>
             <label htmlFor="color-name-input">Color Name:</label>
