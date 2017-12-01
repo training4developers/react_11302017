@@ -4,9 +4,9 @@ import * as ReactDOM from 'react-dom';
 import { ColorTool } from './components/ColorTool';
 
 const colorList = [
-  { name: 'red', hexCode: '#ff0000' },
-  { name: 'blue', hexCode: '#0000ff' },
-  { name: 'green', hexCode: '#00ff00' },
+  { id: 1, name: 'red', hexCode: '#ff0000' },
+  { id: 2, name: 'blue', hexCode: '#0000ff' },
+  { id: 3, name: 'green', hexCode: '#00ff00' },
 ];
 
 ReactDOM.render(

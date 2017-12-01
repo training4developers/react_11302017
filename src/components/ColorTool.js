@@ -12,13 +12,20 @@ export class ColorTool extends React.Component {
     this.state = {
       colors: this.props.colors.concat(),
     };
-
-    this.addColor = this.addColor.bind(this);
   }
 
-  addColor(newColor) {
+  addColor = (newColor) => {
     this.setState({
-      colors: this.state.colors.concat(newColor),
+      colors: this.state.colors.concat({ ...newColor, id: Math.max(...this.state.colors.map(color => color.id)) + 1 }),
+    });
+  }
+
+  deleteColor = (colorId) => {
+
+    const colorIndex = this.state.colors.findIndex(color => color.id === colorId);
+
+    this.setState({
+      colors: [ ...this.state.colors.slice(0, colorIndex), ...this.state.colors.slice(colorIndex + 1) ],
     });
   }
 
@@ -32,7 +39,7 @@ export class ColorTool extends React.Component {
     return (
       <div>
         <ToolHeader headerText="Color Tool" />
-        <DataTable data={this.state.colors} cols={cols} />
+        <DataTable data={this.state.colors} cols={cols} onDelete={this.deleteColor} />
         <ColorForm onSubmitColor={this.addColor} />
       </div>
     );
