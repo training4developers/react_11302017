@@ -1,16 +1,42 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { ColorTool } from './components/ColorTool';
+const colors = [ 'red', 'blue', 'green' ];
 
-const colorList = [
-  { id: 1, name: 'red', hexCode: '#ff0000' },
-  { id: 2, name: 'blue', hexCode: '#0000ff' },
-  { id: 3, name: 'green', hexCode: '#00ff00' },
-];
+let counter = 0;
 
-ReactDOM.render(
-  <ColorTool colors={colorList} />,
-  document.querySelector('#root'),
-);
+
+class ListItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.counter = counter++;
+    this.state = { item: props.item };
+    console.log('constructor list item: ' + this.counter);
+  }
+
+  render() {
+    console.log('render list item: ' + this.counter);
+    return <li>Prop: {this.props.item}, State: {this.state.item}</li>;
+  }
+
+  componentWillUnmount() {
+    console.log('component will unmount list item: ' + this.counter);
+  }
+}
+
+class ItemList extends React.Component {
+  render() {
+    console.log('render item list');
+    return <ul>
+      {this.props.items.map( (item, i) => <ListItem item={item} key={item} />)}
+    </ul>;
+  }
+}
+
+ReactDOM.render(<ItemList items={colors} />, document.querySelector('#root'));
+
+setTimeout(() => {
+  colors.splice(1, 1);
+  ReactDOM.render(<ItemList items={colors} />, document.querySelector('#root'));
+}, 4000);
 
