@@ -32,7 +32,26 @@ export class ColorForm extends React.Component {
     this.setState({
       colorName: '',
       colorHexCode: '',
+    }, () => {
+
+      console.log('after set state invoked: ' + this.state.colorName);
+
+      if (this.colorNameInput) {
+        this.colorNameInput.focus();
+      }    
+
     });
+
+    console.log('after set state called: ' + this.state.colorName);
+
+  }
+
+  componentDidMount() {
+
+    if (this.colorNameInput) {
+      this.colorNameInput.focus();
+    }
+
   }
   
   render() {
@@ -41,7 +60,8 @@ export class ColorForm extends React.Component {
     <div>
       <label htmlFor="color-name-input">Color Name:</label>
       <input type="text" id="color-name-input" name="colorName"
-        value={this.state.colorName} onChange={this.onChange} />
+        value={this.state.colorName} onChange={this.onChange}
+        ref={ inputDOMObj => this.colorNameInput = inputDOMObj } />
     </div>
     <div>
       <label htmlFor="color-hexcode-input">Color HexCode:</label>
