@@ -1,10 +1,23 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
 import { ToolHeader } from './ToolHeader';
 import { DataTable } from './DataTable';
 import { ColorForm } from './ColorForm';
 
 export class ColorTool extends React.Component {
+
+  static propTypes = {
+    colors: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      hexCode: PropTypes.string.isRequired,
+    })).isRequired,
+  };
+
+  static defaultProps = {
+    colors: [],
+  };
 
   constructor(props) {
     super(props);
